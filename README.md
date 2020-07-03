@@ -18,4 +18,10 @@ chmod +x ganog
 ./ganog
 
 
+Actualizaciones:
+
+1.1
+Opción de extraer el texto oculto de una imagen
+
+
 AUTOR VW_
