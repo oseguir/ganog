@@ -119,13 +119,16 @@ case $dec in
 	sleep 1
 	echo '
 	(+) Extrayendo Texto de imagen... 
+	
+	(+) Ingrese la contraseña de acceso al texto
 	' 
 	sleep 3
 	steghide extract -sf default.jpg
 	echo '
+	
 	Almacenado como ocultar.txt 
 	' 
-	sleep 1
+	sleep 4
 	echo 'Abriendo el texto...' 
 	clear
 	cat ocultar.txt 
