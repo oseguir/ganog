@@ -18,6 +18,8 @@ chmod +x ganog
 ./ganog
 
 
+
+
 Actualizaciones:
 
 1.1
