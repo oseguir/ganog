@@ -78,6 +78,7 @@ echo '
 [ X ] A continuación escribe el texto a ocultar en la imagen
 
 ' 
+sleep 0.3
 read -p 'C:\ ' text
 echo $text > ocultar.txt
 sleep 2
