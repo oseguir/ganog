@@ -108,6 +108,7 @@ sleep 1
 echo '
 [ X ] Elige si utilizar la imagen por defecto e otra personalizada'
 sleep 0.1
+echo '' 
 echo '[ 1 ] Defecto' 
 sleep 0.1
 echo '[ 2 ] Personalizado
