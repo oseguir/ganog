@@ -10,12 +10,8 @@ Instalación:
 
 
 git clone https://github.com/VWolf13/ganog 
-
 cd ganog
-
 chmod +x ganog
-
 ./ganog
-
 
 AUTOR VW_
