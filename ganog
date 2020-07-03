@@ -122,6 +122,13 @@ case $dec in
 	' 
 	sleep 3
 	steghide extract -sf default.jpg
+	echo '
+	Almacenado como ocultar.txt 
+	' 
+	sleep 1
+	echo 'Abriendo el texto...' 
+	clear
+	cat ocultar.txt 
 	;;
 2 | 02)
 	echo ' ' 
