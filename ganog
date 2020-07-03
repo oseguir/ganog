@@ -1,4 +1,5 @@
 almacenar() {
+rm ocultar.txt
 clear 
 sleep 2
 echo 'Almacenando imagen...' 
@@ -58,7 +59,6 @@ Texto ocultado exitosamente!!'
 ;;
 esac
 } 
-
 ganog() {
 clear
 sleep 2.5
@@ -78,7 +78,6 @@ echo '
 [ X ] A continuación escribe el texto a ocultar en la imagen
 
 ' 
-sleep 0.3
 read -p 'C:\ ' text
 echo $text > ocultar.txt
 sleep 2
@@ -101,8 +100,81 @@ echo '
 '
 pkg install steghide
 sleep 2
-ganog
+elegir
 }
+vertexto() {
+clear
+sleep 1
+echo '
+[ X ] Elige si utilizar la imagen por defecto e otra personalizada'
+sleep 0.1
+echo '[ 1 ] Defecto' 
+sleep 0.1
+echo '[ 2 ] Personalizado
+' 
+read -p 'C:\ ' dec
+case $dec in
+1 | 01)
+	sleep 1
+	echo '
+	(+) Extrayendo Texto de imagen... 
+	' 
+	sleep 3
+	steghide extract -sf default.jpg
+	;;
+2 | 02)
+	echo ' ' 
+	ls
+	read -p 'Elige la imagen a usar:' dimg
+	echo '
+	(+) Extrayendo Texto de imagen... 
+	
+	(+) Ingrese la contraseña de acceso al texto
+	' 
+	sleep 3
+	steghide extract -sf $dimg
+	echo '
+	Almacenado como ocultar.txt 
+	' 
+	sleep 1
+	echo 'Abriendo el texto...' 
+	clear
+	cat ocultar.txt
+	;;
+*) 
+	echo '(+) Ninguna opción seleccionada' 
+	sleep 2
+	exit
+	;;
+esac
+} 
+elegir() {
+clear 
+echo '
+[+] Elige una opción
+'
+sleep 0.1
+echo '[ 1 ] Ocultar texto en imagen' 
+sleep 0.1
+echo '[ 2 ] Ver texto oculto 
+'
+sleep 0.1
+read -p 'C:\ ' opcion
+case $opcion in
+1)
+	sleep 1
+	ganog 
+	;;
+2) 
+	sleep 1
+	vertexto
+	;;
+*) 
+	sleep 2
+	echo 'Ninguna opción elegida
+'
+esac
+}  
 clear
 echo '
 
@@ -133,6 +205,7 @@ Si | s | si | y | Y | YES | SI | S)
 	clear 
 	echo '(Continuando...)' 
 	sleep 2
-	ganog
+	elegir
 	;;
 esac
+ 
