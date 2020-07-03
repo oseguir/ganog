@@ -1,0 +1,137 @@
+almacenar() {
+clear 
+sleep 2
+echo 'Almacenando imagen...' 
+sleep 2
+echo ' ' 
+cp default.jpg ~/storage/downloads
+echo '[ X ] Imagen almacenada en Descargas como Default.jpg'
+sleep 2
+echo '
+Gracias por usar el script <3
+
+Autor : #VW_
+' 
+sleep 2
+} 
+imagen() {
+clear
+echo '
+
+[ X ] Si deseas utilizar una imagen personalizada, es necesario moverla al directorio actual, por defecto se usará la imagen que trae la tool
+
+' 
+sleep 3
+read -p '[ X ] Deseas utilizar la imagen que se encuentra por defecto [Y/N]?: ' ruta
+case $ruta in
+Y | y | s | S | si | Yes | SI)
+clear
+sleep 2
+echo '
+
+[ + ] Procesando...' 
+sleep 3
+echo '
+
+A continuación elige una contraseña para proteger el texto a ocultar 
+
+' 
+sleep 2
+steghide embed -ef ocultar.txt -cf default.jpg
+echo '
+[ + ] Texto ocultado exitosamente!!'
+almacenar 
+;;
+*)
+clear
+read -p 'Elige la imagen personalizada: ' img
+sleep 2
+echo 'Procesando...' 
+sleep 3
+echo '
+A continuación elige una contraseña para proteger el texto a ocultar 
+
+' 
+steghide embed -ef ocultar.txt -cf $img
+echo '
+Texto ocultado exitosamente!!' 
+;;
+esac
+} 
+
+ganog() {
+clear
+sleep 2.5
+echo '
+
+//Antes de ocultar el texto en la imagen, es necesario crearlo...
+
+'
+sleep 5
+echo ' 
+//creando archivo de texto...' 
+sleep 3
+clear
+echo ' 
+
+
+[ X ] A continuación escribe el texto a ocultar en la imagen
+
+' 
+read -p 'C:\ ' text
+echo $text > ocultar.txt
+sleep 2
+echo 'Creado con éxito!!' 
+sleep 1.3 
+imagen
+}
+
+instalar() {
+clear
+echo ' ' 
+echo '[+]Configurando...
+' 
+sleep 3
+termux-setup-storage
+echo '
+
+[+] Instalando...
+
+'
+pkg install steghide
+sleep 2
+ganog
+}
+clear
+echo '
+
+          .-~~-.
+         (_~..~_)
+           ||||
+  __________________
+ (____    _||||_    ) HERRAMIENTA
+   ___)  ( _/\_ )  (___
+  (_      ~-..-~      _)  DE
+ ___)                (___
+(______          ________) ESTEGANOGRAFIA
+    ___)        (
+   (_____________) BY VW_
+
+'
+sleep 2
+echo '[ X ] En caso de ya tenerlo instalado elige (N)'
+echo ' ' 
+sleep 1
+read -p '[ X ] Desea instalar ganog? (Y/N): ' instalar
+case $instalar in
+Si | s | si | y | Y | YES | SI | S) 
+	instalar
+	;;
+*)
+	sleep 2
+	clear 
+	echo '(Continuando...)' 
+	sleep 2
+	ganog
+	;;
+esac
